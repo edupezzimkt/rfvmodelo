@@ -19,6 +19,7 @@ else:
     st.warning("Por favor, faça o upload de um arquivo CSV para continuar.")
 
     # Conversão de tipos
+    df['pedido_data'] = pd.to_datetime(df['pedido_data'], errors='coerce')
     df['item_quantidade'] = pd.to_numeric(df['item_quantidade'], errors='coerce').fillna(0).astype(int)
     df['pedido_descontos'] = pd.to_numeric(df['pedido_descontos'], errors='coerce')
     df['item_valor_unidade'] = pd.to_numeric(df['item_valor_unidade'], errors='coerce')
