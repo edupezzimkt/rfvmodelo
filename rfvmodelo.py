@@ -17,15 +17,7 @@ if df is not None:
     df = pd.read_csv(df, parse_dates=['pedido_data'])  # certifique-se que a coluna 'pedido_data' está presente
 else:
     st.warning("Por favor, faça o upload de um arquivo CSV para continuar.")
-
-    # Conversão de tipos
-    df['pedido_data'] = pd.to_datetime(df['pedido_data'], errors='coerce')
-    df['item_quantidade'] = pd.to_numeric(df['item_quantidade'], errors='coerce').fillna(0).astype(int)
-    df['pedido_descontos'] = pd.to_numeric(df['pedido_descontos'], errors='coerce')
-    df['item_valor_unidade'] = pd.to_numeric(df['item_valor_unidade'], errors='coerce')
-    df['pedido_valor_frete'] = pd.to_numeric(df['pedido_valor_frete'], errors='coerce')
-    df['valor_total_pedido'] = pd.to_numeric(df['valor_total_pedido'], errors='coerce')
-
+    
     # Remover duplicatas
     df.drop_duplicates(subset=['cpf_cnpj', 'pedido_numero'], keep='last', inplace=True)
 
