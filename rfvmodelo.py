@@ -13,11 +13,7 @@ st.title("📊 Dashboard RFV de Clientes Spazzio")
 # Upload do arquivo
 df = st.file_uploader("📂 Faça o upload do arquivo CSV de pedidos", type=["csv"])
 
-if df is not None:
-    df = pd.read_csv(df, parse_dates=['pedido_data'])  # certifique-se que a coluna 'pedido_data' está presente
-else:
-    st.warning("Por favor, faça o upload de um arquivo CSV para continuar.")
-    
+df = pd.read_csv(df, parse_dates=['pedido_data'])  # certifique-se que a coluna 'pedido_data' está presente
 
 # Remover duplicatas
 df.drop_duplicates(subset=['cpf_cnpj', 'pedido_numero'], keep='last', inplace=True)
