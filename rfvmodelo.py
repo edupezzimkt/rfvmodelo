@@ -18,8 +18,9 @@ if df is not None:
 else:
     st.warning("Por favor, faça o upload de um arquivo CSV para continuar.")
     
-    # Remover duplicatas
-    df.drop_duplicates(subset=['cpf_cnpj', 'pedido_numero'], keep='last', inplace=True)
+
+# Remover duplicatas
+df.drop_duplicates(subset=['cpf_cnpj', 'pedido_numero'], keep='last', inplace=True)
 
 resumo = df['valor_total_pedido'].describe()
 
